@@ -1,1 +1,2 @@
-# fitnessTrackerFrontEnd
+# stangerthings
+React Project - Peer Programming
