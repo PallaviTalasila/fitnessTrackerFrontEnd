@@ -1,7 +1,10 @@
-export { default as AddPost } from "./Posts/AddPost";
+export { default as EditRoutine } from "./Routines/EditRoutine";
 export { default as Header } from "./Header";
 export { default as Home } from "./Home";
 export { default as Login } from "./Login";
 export { default as Register } from "./Register";
-export { default as ViewPosts } from "./Posts/ViewPosts";
-export { default as Profile} from "./Profile";
+export { default as ViewRoutines } from "./Routines/ViewRoutines";
+export { default as ViewActivities } from "./Activities/ViewActivities";
+export { default as MyRoutines } from "./Routines/MyRoutines";
+export { default as AddRoutine } from "./Routines/AddRoutine";
+export { default as AddActivity } from "./Activities/AddActivity";

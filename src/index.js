@@ -5,8 +5,9 @@ import {
   Login,
   Register,
   Home,
-  ViewPosts,
-  Profile,
+  ViewRoutines,
+  MyRoutines,
+  ViewActivities,
 } from "./components";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -17,9 +18,6 @@ const App = () => {
   const [password, setPassword] = useState("");
   const [userToken, setUserToken] = useState(loginKey ? loginKey : false);
   const [loggedIn, setLoggedIn] = useState(loginKey ? true : false);
-  const [message, setMessage] = useState("");
-  const [myMessages, setMyMessages] = useState([]);
-  const [myPosts, setMyPosts] = useState([]);
 
   return (
     <div className="app">
@@ -64,31 +62,35 @@ const App = () => {
             )}
           />
           <Route
-            path="/profile"
+            path="/routines"
             render={(props) => (
-              <Profile
+              <ViewRoutines
                 {...props}
                 username={username}
                 userToken={userToken}
-                message={message}
-                setMessage={setMessage}
-                myMessages={myMessages}
-                setMyMessages={setMyMessages}
-                myPosts={myPosts}
-                setMyPosts={setMyPosts}
+                loggedIn={!loggedIn}
               />
             )}
           />
           <Route
-            path="/posts"
+            path="/myroutines"
             render={(props) => (
-              <ViewPosts
+              <MyRoutines
                 {...props}
-                loggedIn={loggedIn}
-                userToken={userToken}
                 username={username}
-                message={message}
-                setMessage={setMessage}
+                userToken={userToken}
+                loggedIn={loggedIn}
+              />
+            )}
+          />
+          <Route
+            path="/activities"
+            render={(props) => (
+              <ViewActivities
+                {...props}
+                username={username}
+                userToken={userToken}
+                loggedIn={loggedIn}
               />
             )}
           />

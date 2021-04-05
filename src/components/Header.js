@@ -50,15 +50,15 @@ export default function Header({
         <Link className={classes.linkColor} to="/">
           <Button color="inherit">HOME</Button>
         </Link>
-        <Link className={classes.linkColor} to="/profile">
+        <Link className={classes.linkColor} to="/routines">
           <Button color="inherit">ROUTINES</Button>
         </Link>
         {!loggedIn ? null : (
-          <Link className={classes.linkColor} to="/profile">
+          <Link className={classes.linkColor} to="/myroutines">
             <Button color="inherit">MY ROUTINES</Button>
           </Link>
         )}
-        <Link className={classes.linkColor} to="/posts">
+        <Link className={classes.linkColor} to="/activities">
           <Button color="inherit">ACTIVITIES</Button>
         </Link>
         {loggedIn ? null : (

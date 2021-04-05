@@ -30,19 +30,20 @@ const Register = ({
     event.preventDefault();
     try {
       const data = await register(username, password);
-      if (data.success === false) {
-        swal(data.error.message);
+      console.log(data);
+      if (data.error) {
+        swal(data.message);
         setUsername("");
         setPassword("");
         setPasswordConfirmation("");
       } else {
-        const token = data.data.token;
+        const token = data.token;
         localStorage.setItem(`Token`, token);
         setUserToken(token);
         setLoggedIn(true);
         setUsername(username);
         localStorage.setItem(`Username`, username);
-        swal(`You are logged in as ${username}`);
+        swal(data.message);
         setPasswordConfirmation("");
         history.push("/");
       }
@@ -60,7 +61,7 @@ const Register = ({
         <form onSubmit={confirmPasswords}>
           <input
             type="text"
-            minLength="6"
+            minLength="8"
             placeholder="Username"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
@@ -68,7 +69,7 @@ const Register = ({
           />
           <input
             type="password"
-            minLength="6"
+            minLength="8"
             placeholder="Password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}

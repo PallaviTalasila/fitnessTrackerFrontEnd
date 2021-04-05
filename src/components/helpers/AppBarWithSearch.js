@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 import Button from "@material-ui/core/Button";
-import AddPost from "../Posts/AddPost";
+import AddRoutine from "../Routines/AddRoutine";
 import Drawer from "@material-ui/core/Drawer";
 
 const useStyles = makeStyles((theme) => ({
@@ -77,8 +77,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AppBarWithSearch({
-  posts,
-  setPosts,
+  routines,
+  setRoutines,
   loggedIn,
   searchTerm,
   setSearchTerm,
@@ -106,7 +106,7 @@ export default function AppBarWithSearch({
       <AppBar position="relative">
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
-            POSTS
+            Routines
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -124,7 +124,7 @@ export default function AppBarWithSearch({
             />
           </div>
           {loggedIn && (
-            <Button onClick={toggleDrawer("top", true)}style={{color:"white"}}>Add Post</Button>
+            <Button onClick={toggleDrawer("top", true)}style={{color:"white"}}>Add Routine</Button>
           )}
 
           <Drawer
@@ -132,11 +132,11 @@ export default function AppBarWithSearch({
             open={state["top"]}
             onClose={toggleDrawer("top", false)}
           >
-            <AddPost
+            <AddRoutine
               loggedIn={loggedIn}
               userToken={userToken}
-              setPosts={setPosts}
-              posts={posts}
+              setRoutines={setRoutines}
+              routines={routines}
             />
           </Drawer>
         </Toolbar>

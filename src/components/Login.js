@@ -18,18 +18,18 @@ const Login = ({
     event.preventDefault();
     try {
       const data = await login(username, password);
-      if (data.success === false) {
-        swal(data.error.message);
+      if (data.error) {
+        swal(data.message);
         setUsername("");
         setPassword("");
       } else {
-        const token = data.data.token;
+        const token = data.token;
         localStorage.setItem(`Token`, token);
         setUserToken(token);
         setLoggedIn(true);
         setUsername(username);
         localStorage.setItem(`Username`, username);
-        swal(`You are logged in as ${username}`);
+        swal(data.message);
         history.push("/");
       }
     } catch (error) {
