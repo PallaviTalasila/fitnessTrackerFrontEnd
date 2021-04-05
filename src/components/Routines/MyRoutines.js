@@ -138,8 +138,7 @@ const MyRoutines = (props) => {
       />
       <div className={classes.root}>
         {routinesToDisplay.map((routine, index) => {
-          console.log(routine.creatorName);
-          console.log(username);
+        
           if (loggedIn && username === routine.creatorName) {
             return (
               <Accordion key={index} className={classes.items}>
