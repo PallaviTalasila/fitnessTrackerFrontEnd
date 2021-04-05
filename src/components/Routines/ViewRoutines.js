@@ -191,30 +191,34 @@ const ViewRoutines = (props) => {
               </AccordionDetails>
               <Divider />
               <AccordionActions>
-                <Button
-                  size="small"
-                  color="primary"
-                  onClick={toggleViewDrawer(routine.id, true)}
-                >
-                  <span style={{ color: "white" }}>Edit Routine</span>
-                </Button>
-                <Drawer
-                  anchor={"top"}
-                  open={state[routine.id]}
-                  onClose={toggleViewDrawer(routine.id, false)}
-                >
-                  <div>
-                    <EditRoutine
-                      routineId={routine.id}
-                      routine={routine}
-                      routines={routines}
-                      setRoutines={setRoutines}
-                      loggedIn={loggedIn}
-                      userToken={userToken}
-                    />
-                    )
-                  </div>
-                </Drawer>
+                {loggedIn && username === routine.creatorName? (
+                  <>
+                    <Button
+                      size="small"
+                      color="primary"
+                      onClick={toggleViewDrawer(routine.id, true)}
+                    >
+                      <span style={{ color: "white" }}>Edit Routine</span>
+                    </Button>
+                    <Drawer
+                      anchor={"top"}
+                      open={state[routine.id]}
+                      onClose={toggleViewDrawer(routine.id, false)}
+                    >
+                      <div>
+                        <EditRoutine
+                          routineId={routine.id}
+                          routine={routine}
+                          routines={routines}
+                          setRoutines={setRoutines}
+                          loggedIn={loggedIn}
+                          userToken={userToken}
+                        />
+                        )
+                      </div>
+                    </Drawer>
+                  </>
+                ) : null}
               </AccordionActions>
             </Accordion>
           );

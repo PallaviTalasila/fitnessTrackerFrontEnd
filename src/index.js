@@ -68,7 +68,7 @@ const App = () => {
                 {...props}
                 username={username}
                 userToken={userToken}
-                loggedIn={!loggedIn}
+                loggedIn={loggedIn}
               />
             )}
           />
